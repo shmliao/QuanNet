@@ -1,0 +1,13 @@
+C:\Users\Administrator\Desktop\C#量化开源框架\QuanNet\QuanNetWpf\bin\Release\QuanNetWpf.exe.config
+C:\Users\Administrator\Desktop\C#量化开源框架\QuanNet\QuanNetWpf\bin\Release\QuanNetWpf.exe
+C:\Users\Administrator\Desktop\C#量化开源框架\QuanNet\QuanNetWpf\bin\Release\QuanNetWpf.pdb
+C:\Users\Administrator\Desktop\C#量化开源框架\QuanNet\QuanNetWpf\obj\Release\QuanNetWpf.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\C#量化开源框架\QuanNet\QuanNetWpf\obj\Release\MainWindow.baml
+C:\Users\Administrator\Desktop\C#量化开源框架\QuanNet\QuanNetWpf\obj\Release\MainWindow.g.cs
+C:\Users\Administrator\Desktop\C#量化开源框架\QuanNet\QuanNetWpf\obj\Release\App.g.cs
+C:\Users\Administrator\Desktop\C#量化开源框架\QuanNet\QuanNetWpf\obj\Release\QuanNetWpf_MarkupCompile.cache
+C:\Users\Administrator\Desktop\C#量化开源框架\QuanNet\QuanNetWpf\obj\Release\QuanNetWpf.g.resources
+C:\Users\Administrator\Desktop\C#量化开源框架\QuanNet\QuanNetWpf\obj\Release\QuanNetWpf.Properties.Resources.resources
+C:\Users\Administrator\Desktop\C#量化开源框架\QuanNet\QuanNetWpf\obj\Release\QuanNetWpf.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\C#量化开源框架\QuanNet\QuanNetWpf\obj\Release\QuanNetWpf.exe
+C:\Users\Administrator\Desktop\C#量化开源框架\QuanNet\QuanNetWpf\obj\Release\QuanNetWpf.pdb

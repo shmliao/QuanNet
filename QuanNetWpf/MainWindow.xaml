@@ -1,0 +1,48 @@
+﻿<Window x:Class="QuanNetWpf.MainWindow"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         WindowStyle="None" AllowsTransparency="True" Background="{x:Null}"
+        Title="MainWindow" Height="300" Width="300" WindowStartupLocation="CenterScreen">
+    <Grid  Width="{Binding Width, ElementName=w}" Height="{Binding Height, ElementName=w}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition  />
+        </Grid.RowDefinitions>
+        <Border Grid.RowSpan="4" BorderBrush="Gray" BorderThickness="3" CornerRadius="20" Margin="10"  Opacity="1"  Background="White"></Border>
+        <Button  Name="btnClose"  Grid.Row="0"></Button>
+        <Image Grid.Row="0"  VerticalAlignment="Center" Width="120"  Height="120"  />
+        <TextBox x:Name="UserTextBox"  Grid.Row="1"  Width="200" VerticalAlignment="Center" BorderThickness="0,0,0,1" Height="23"></TextBox>
+        <TextBlock Foreground="DarkGray"  Grid.Row="1"  IsHitTestVisible="False" HorizontalAlignment="Center" Height="23" Text="请输入用户名" VerticalAlignment="Center" Width="90" FontFamily="Microsoft YaHei">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=UserTextBox}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <TextBox  x:Name="PwdTextBox"   Grid.Row="2"  Width="200" VerticalAlignment="Center" BorderThickness="0,0,0,1" Height="23"></TextBox>
+        <TextBlock Foreground="DarkGray" Grid.Row="2"  IsHitTestVisible="False" HorizontalAlignment="Center" Height="23" Text="请输入密码" VerticalAlignment="Center" Width="90" FontFamily="Microsoft YaHei">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=PwdTextBox}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <Button Name="btnlogin" Grid.Row="2"  >
+            <!--<Button.Background>
+                <ImageBrush ImageSource="/Resources/LoginBtn.jpg" Stretch="Fill"/>
+            </Button.Background>-->
+        </Button>
+    </Grid>
+</Window>
