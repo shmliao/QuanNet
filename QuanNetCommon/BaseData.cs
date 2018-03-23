@@ -287,11 +287,11 @@ namespace QuanNetCommon
         /// <summary>
         /// 报单方向
         /// </summary>
-        public int direction;          
+        public string direction;          
         /// <summary>
         /// 报单开平仓
         /// </summary>
-        public int offset;            
+        public string offset;            
         /// <summary>
         /// 报单价格
         /// </summary>
@@ -307,7 +307,7 @@ namespace QuanNetCommon
         /// <summary>
         /// 报单状态
         /// </summary>
-        public int status;             
+        public string status;             
 
         /// <summary>
         /// 发单时间
@@ -468,7 +468,7 @@ namespace QuanNetCommon
         /// <summary>
         /// 错误信息
         /// </summary>
-        public int errorMsg;           
+        public string errorMsg;           
         /// <summary>
         /// 补充信息
         /// </summary>
@@ -531,7 +531,7 @@ namespace QuanNetCommon
         /// <summary>
         /// 合约类型
         /// </summary>
-        public int productClass;       
+        public string productClass;       
         /// <summary>
         /// 合约大小
         /// </summary>
@@ -553,7 +553,7 @@ namespace QuanNetCommon
         /// <summary>
         /// 期权类型
         /// </summary>
-        public int optionType;        
+        public string optionType;        
         /// <summary>
         /// 到期日
         /// </summary>

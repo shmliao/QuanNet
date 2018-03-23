@@ -11,6 +11,3 @@ C:\Users\Administrator\Desktop\C#量化开源框架\QuanNet\QuanNetWpf\obj\Relea
 C:\Users\Administrator\Desktop\C#量化开源框架\QuanNet\QuanNetWpf\obj\Release\QuanNetWpf.csproj.GenerateResource.Cache
 C:\Users\Administrator\Desktop\C#量化开源框架\QuanNet\QuanNetWpf\obj\Release\QuanNetWpf.exe
 C:\Users\Administrator\Desktop\C#量化开源框架\QuanNet\QuanNetWpf\obj\Release\QuanNetWpf.pdb
-C:\Users\Administrator\Desktop\QuanNet\QuanNet\QuanNetWpf\bin\Release\QuanNetWpf.exe.config
-C:\Users\Administrator\Desktop\QuanNet\QuanNet\QuanNetWpf\obj\Release\QuanNetWpf.exe
-C:\Users\Administrator\Desktop\QuanNet\QuanNet\QuanNetWpf\obj\Release\QuanNetWpf.pdb

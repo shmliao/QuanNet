@@ -34,14 +34,23 @@ namespace QuanNetCommon.Gateway.CtpGateway
             this.AuthCode = authCode;
             this.UserProductInfo = userProductInfo;
             this.Gateway = gateway;
-
             this.OnFrontConnected += new FrontConnected(HandleOnFrontConnected);
             this.OnFrontDisconnected += new FrontDisconnected(HandleOnFrontDisconnected);
             this.OnHeartBeatWarning += new HeartBeatWarning(HandleOnHeartBeatWarning);
             this.OnRspError += new RspError(HandleOnRspError);
             this.OnRspUserLogin += new RspUserLogin(HandleOnRspUserLogin);
+            ///撤单错误
             this.OnRspOrderAction += new RspOrderAction(HandleOnRspOrderAction);
+
+
             this.OnRspOrderInsert += new RspOrderInsert(HandleOnRspOrderInsert);
+
+            ///撤单错误回报（交易所）
+            this.OnErrRtnOrderAction+= new ErrRtnOrderAction(HandleErrRtnOrderAction);
+            ///报单错误回报
+            this.OnErrRtnOrderInsert+= new ErrRtnOrderInsert(HandleErrRtnOrderInsert);
+  
+
             this.OnRspQryInstrument += new RspQryInstrument(HandleOnRspQryInstrument);
             this.OnRspQryInvestorPosition += new RspQryInvestorPosition(HandleOnRspQryInvestorPosition);
             this.OnRspQryTradingAccount += new RspQryTradingAccount(HandleOnRspQryTradingAccount);
@@ -184,6 +193,53 @@ namespace QuanNetCommon.Gateway.CtpGateway
         }
 
         /// <summary>
+        /// 撤单错误回报
+        /// </summary>
+        /// <param name="pInputOrder"></param>
+        /// <param name="pRspInfo"></param>
+        /// <param name="nRequestID"></param>
+        /// <param name="bIsLast"></param>
+        public void HandleErrRtnOrderAction(ThostFtdcOrderActionField pOrderAction, ThostFtdcRspInfoField pRspInfo)
+        {
+            Console.WriteLine("撤单错误回报（柜台）");
+        }
+
+        /// <summary>
+        /// 报单错误回报
+        /// </summary>
+        /// <param name="pInputOrder"></param>
+        /// <param name="pRspInfo"></param>
+        /// <param name="nRequestID"></param>
+        /// <param name="bIsLast"></param>
+        public void HandleErrRtnOrderInsert(ThostFtdcInputOrderField pInputOrder, ThostFtdcRspInfoField pRspInfo)
+        {
+            var order = new OrderData();
+            order.gatewayName = this.Gateway.gatewayName;
+            order.symbol = pInputOrder.InstrumentID;
+            order.vtSymbol = pInputOrder.InstrumentID;
+            order.exchange = pInputOrder.ExchangeID;
+            order.orderID = pInputOrder.OrderRef;
+            order.vtOrderID = order.vtSymbol + '.' + order.orderID;
+            order.direction=(string)TradeConstantDicSetting.DirectionTypeDic[pInputOrder.Direction];
+            order.offset = (string)TradeConstantDicSetting.OffsetTypeDic[pInputOrder.CombOffsetFlag_0];
+            order.status = TradeCanstant.statusReject;
+            order.price = pInputOrder.LimitPrice;
+            order.totalVolume = pInputOrder.VolumeTotalOriginal;
+
+            ///推送委托信息
+            this.Gateway.MainController.MainEvent._OnOrder.Invoke(order);
+
+            ///错误推送
+            var errorData = new ErrorData();
+            errorData.gatewayName=this.Gateway.gatewayName;
+            errorData.errorID = Convert.ToString(pRspInfo.ErrorID);
+            errorData.errorMsg = pRspInfo.ErrorMsg;
+            this.Gateway.MainController.MainEvent._OnError.Invoke(errorData);
+
+        }
+        
+
+        /// <summary>
         /// """合约查询回报"""
         /// </summary>
         /// <param name="pInstrument"></param>
@@ -192,22 +248,25 @@ namespace QuanNetCommon.Gateway.CtpGateway
         /// <param name="bIsLast"></param>
         public void HandleOnRspQryInstrument(ThostFtdcInstrumentField pInstrument, ThostFtdcRspInfoField pRspInfo, int nRequestID, bool bIsLast)
         {
-            var contact = new ContractData();
-            contact.gatewayName = this.Gateway.gatewayName;
-            contact.symbol = pInstrument.InstrumentID;
-            contact.exchange = pInstrument.ExchangeID;
-            contact.vtSymbol = pInstrument.InstrumentID;
-            contact.name = pInstrument.InstrumentName;
-            contact.size = pInstrument.VolumeMultiple;
-            contact.priceTick = pInstrument.PriceTick;
-            contact.strikePrice = pInstrument.StrikePrice;
-            contact.underlyingSymbol = pInstrument.UnderlyingInstrID;
-            contact.productClass = (int)pInstrument.ProductClass;
-            contact.expiryDate = pInstrument.ExpireDate;
-            contact.optionType = (int)pInstrument.OptionsType;
-            ///合约推送
-            this.Gateway.MainController.MainEvent._OnContract.Invoke(contact);
+            var contract = new ContractData();
+            contract.gatewayName = this.Gateway.gatewayName;
+            contract.symbol = pInstrument.InstrumentID;
+            contract.exchange = pInstrument.ExchangeID;
+            contract.vtSymbol = pInstrument.InstrumentID;
+            contract.name = pInstrument.InstrumentName;
+            contract.size = pInstrument.VolumeMultiple;
+            contract.priceTick = pInstrument.PriceTick;
+            contract.strikePrice = pInstrument.StrikePrice;
+            contract.underlyingSymbol = pInstrument.UnderlyingInstrID;
+            contract.productClass =(string)TradeConstantDicSetting.ProductTypeDic[pInstrument.ProductClass];
+            contract.expiryDate = pInstrument.ExpireDate;
 
+            if (contract.productClass==TradeCanstant.productOption)
+            {
+                contract.optionType = (string)TradeConstantDicSetting.OptionTypeDic[pInstrument.OptionsType];
+            }
+            ///合约推送
+            this.Gateway.MainController.MainEvent._OnContract.Invoke(contract);
             if (bIsLast)
             {
                 Console.WriteLine("获取合约完毕");

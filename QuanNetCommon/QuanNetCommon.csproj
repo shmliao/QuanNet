@@ -45,17 +45,19 @@
   <ItemGroup>
     <Compile Include="BaseData.cs" />
     <Compile Include="BLSModel.cs" />
-    <Compile Include="BaseGateway.cs" />
+    <Compile Include="Gateway\BaseGateway.cs" />
     <Compile Include="Event\EventDefine.cs" />
     <Compile Include="Gateway\CtpGateway\CtpGateway.cs" />
     <Compile Include="Gateway\CtpGateway\CtpMdApi.cs" />
     <Compile Include="Gateway\CtpGateway\CtpTdApi.cs" />
+    <Compile Include="Gateway\CtpGateway\TradeConstantDicSetting.cs" />
     <Compile Include="Gateway\SecGateway\SecGateway.cs" />
-    <Compile Include="IBaseApi.cs" />
+    <Compile Include="Gateway\IBaseApi.cs" />
     <Compile Include="Gateway\SecGateway\SecMdApi.cs" />
     <Compile Include="Gateway\SecGateway\SecTdApi.cs" />
     <Compile Include="MainControl\MainController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TradeCanstant.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

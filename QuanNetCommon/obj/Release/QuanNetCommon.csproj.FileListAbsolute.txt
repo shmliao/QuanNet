@@ -1,6 +1,0 @@
-C:\Users\Administrator\Desktop\QuanNet\QuanNet\QuanNetCommon\bin\Release\QuanNetCommon.dll
-C:\Users\Administrator\Desktop\QuanNet\QuanNet\QuanNetCommon\bin\Release\QuanNetCommon.pdb
-C:\Users\Administrator\Desktop\QuanNet\QuanNet\QuanNetCommon\bin\Release\CTP.dll
-C:\Users\Administrator\Desktop\QuanNet\QuanNet\QuanNetCommon\obj\Release\QuanNetCommon.csprojResolveAssemblyReference.cache
-C:\Users\Administrator\Desktop\QuanNet\QuanNet\QuanNetCommon\obj\Release\QuanNetCommon.dll
-C:\Users\Administrator\Desktop\QuanNet\QuanNet\QuanNetCommon\obj\Release\QuanNetCommon.pdb

@@ -7401,6 +7401,11 @@ namespace CTP
 		/// 用户强评标志
 		/// </summary>
 		int UserForceClose;
+		/// <summary>
+		/// 交易所代码
+		/// </summary>
+		[MarshalAs(UnmanagedType::ByValTStr, SizeConst = 9)]
+		String^ ExchangeID;
 	};
 
 	/// <summary>
